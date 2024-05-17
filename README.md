@@ -14,7 +14,7 @@ To run this apps
 
 ## Lessons Learned
 
-while working on this project, I learned how to make an https request with axios etc..
+while working on this project, I learned how to use react native, make an https request with axios etc..
 
 
 ## 🚀 About Me
