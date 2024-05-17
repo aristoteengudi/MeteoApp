@@ -69,7 +69,7 @@ export default function HomeScreen(){
                         <TouchableOpacity 
                         onPress={()=>toggleSearch(!showSearch)} 
                         style={{backgroundColor: theme.bgWhite(0.1)}} 
-                        className="rounded-full p-3 m-0"
+                        className="rounded-full p-3 m-1"
                         >
                         <MagnifyingGlassIcon size={"25"} color={"white"}/>
                         </TouchableOpacity>
@@ -78,16 +78,16 @@ export default function HomeScreen(){
                         locations.length>0 && showSearch?(
                             <View className="absolute w-full bg-gray-300 top-16 rounded-3xl">
                                 {
-                                    locations.map((loc,index) => {
+                                    locations.map((locat,index) => {
                                         let showBorder = index +1 != locations.length;
-                                        let borderClass = showBorder? " border-b-2 border-b-gray-400": "";
+                                        let borderClass = showBorder? "border-b-2 border-b-gray-400": "";
                                         return (
                                             <TouchableOpacity
-                                                onPress={() => handleLocation(loc)}
+                                                onPress={() => handleLocation(locat)}
                                                 key={index} 
-                                                className={"flex-row items-center border-0 p-3 px-4 mb-1"+borderClass}>
+                                                className={"flex-row items-center border-0 p-3 px-4 mb-1 "+borderClass}>
                                                 <MapPinIcon size={"20"}color={"gray"}/>
-                                                <Text className="text-black text-lg ml-2">{loc?.name}, {loc?.country}</Text>
+                                                <Text className="text-black text-lg ml-2">{locat?.name}, {locat?.country}</Text>
                                             </TouchableOpacity>
                                         )
                                     })
@@ -99,9 +99,9 @@ export default function HomeScreen(){
                 {/* forecast section*/}
                 <View className="mx-4 flex justify-around flex-1 mb-2">
                     <Text className="text-white text-center text-2xl font-bold">
-                        {location?.name},
+                    {location?.name===undefined ? "":location?.name+", "}
                         <Text className="text-lg font-semibold text-gray-300">
-                            {" "+location?.country}
+                        {location?.country===undefined ? "":" "+location?.country}
                         </Text>
                     </Text>
                     {/** weather image*/}
@@ -113,7 +113,7 @@ export default function HomeScreen(){
                     {/* degre celcius */}
                     <View className="space-y-2">
                         <Text className="text-center font-bold text-white text-6xl ml-5">
-                            {current?.temp_c} &#176;
+                            {current?.temp_c} {current?.temp_c? "°":""}
                         </Text>
                         <Text className="text-center text-white text-xl ml-5 tracking-widest">
                             {current?.condition?.text}
