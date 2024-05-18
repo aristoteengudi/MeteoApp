@@ -10,6 +10,7 @@ import {MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import {MapPinIcon} from "react-native-heroicons/solid"
 import {CalendarDaysIcon} from "react-native-heroicons/solid"
 import { fetchWeatherForecast, fetchWeatherLocations } from "../components/api/meteo";
+import CONFIG from "../configs/config";
 
 
 
@@ -24,7 +25,7 @@ export default function HomeScreen(){
         toggleSearch(false);
         fetchWeatherForecast({
             cityName: loc.name,
-            days: '7'
+            days: CONFIG.DAY
         }).then(data =>{
             setWeather(data);
             console.log("got forecast: ",data)
@@ -123,6 +124,7 @@ export default function HomeScreen(){
                         </Text>
                     </View>
                     {/* other state */}
+                    </ScrollView>
                     <View className="flex-row justify-between mx-4">
                         <View className="flex-row space-x-2 items-center">
                             <Image source={require("../../assets/icons/wind.png")} className="h-6 w-6"/>
@@ -143,7 +145,7 @@ export default function HomeScreen(){
                             </Text>
                         </View>
                     </View>
-                    </ScrollView>
+
                 </View>
                 {/* forecast for next day */}
                 <View className="mb-2 space-y-3">
@@ -182,5 +184,3 @@ export default function HomeScreen(){
         </View>
     )
 }
-
-
