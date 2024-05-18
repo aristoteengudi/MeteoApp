@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import { View, Text, SafeAreaView, TextInput, ScrollView, VirtualizedList} from "react-native";
+import { View, Text, SafeAreaView, TextInput, ScrollView} from "react-native";
 import { Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { TouchableOpacity } from "react-native";
@@ -9,8 +9,7 @@ import { debounce } from "lodash";
 import {MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import {MapPinIcon} from "react-native-heroicons/solid"
 import {CalendarDaysIcon} from "react-native-heroicons/solid"
-import { fetchWeatherForecast, fetchWeatherLocations } from "../../api/meteo";
-import { weatherImages } from "../../constants";
+import { fetchWeatherForecast, fetchWeatherLocations } from "../components/api/meteo";
 
 
 
@@ -45,6 +44,7 @@ export default function HomeScreen(){
 
     const handleTextDebounce = useCallback(debounce(handleSearch, 1200), [])
     const {current, location} = weather;
+    const [date, hours] = location?.localtime? location?.localtime.split(" "):""
 
     return (
         <View className="flex-1 relative">
@@ -97,7 +97,10 @@ export default function HomeScreen(){
                     }
                 </View>
                 {/* forecast section*/}
-                <View className="mx-4 flex justify-around flex-1 mb-2">
+                <View className="mx-4 flex justify-around flex-1 mb-5">
+                    <ScrollView 
+                        contentContainerStyle={{paddingVertical: 50}}
+                        showsVerticalScrollIndicator={false}>
                     <Text className="text-white text-center text-2xl font-bold">
                     {location?.name===undefined ? "":location?.name+", "}
                         <Text className="text-lg font-semibold text-gray-300">
@@ -107,7 +110,7 @@ export default function HomeScreen(){
                     {/** weather image*/}
                     <View className="flex-row justify-center">
                         <Image
-                          source={weatherImages[current?.condition.text]}
+                          source={{ uri: "https:"+current?.condition.icon}}
                           className="w-52 h-52"/>
                     </View>
                     {/* degre celcius */}
@@ -136,10 +139,11 @@ export default function HomeScreen(){
                         <View className="flex-row space-x-2 items-center">
                             <Image source={require("../../assets/icons/sun.png")} className="h-6 w-6"/>
                             <Text className="text-white font-semibold text-base">
-                                6:05 AM
+                                {hours}
                             </Text>
                         </View>
                     </View>
+                    </ScrollView>
                 </View>
                 {/* forecast for next day */}
                 <View className="mb-2 space-y-3">
