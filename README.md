@@ -27,11 +27,20 @@ while working on this project, I learned how to make an https request with axios
 
 Create a file named config.js in the "src/configs" directory; then you will put this piece of code inside it.
 
+## API LInks
+
+please use : https://www.weatherapi.com
+
 ```javascript
-    API_KEY: "",
+const CONFIG = {
+    API_KEY: "weather_api",
     DAY: 10,
     INFOBIP_API_KEY: "",
     INFOBIP_ENDPOINT: "",
+
+};
+
+export default CONFIG;
 ```
 
 
