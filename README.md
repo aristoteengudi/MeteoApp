@@ -21,8 +21,7 @@ And for run this apps
 
 ## Lessons Learned
 
-while working on this project, I learned how to make an https request with axios etc..
-
+many thins
 ## Configuration File
 
 Create a file named config.js in the "src/configs" directory; then you will put this piece of code inside it.
