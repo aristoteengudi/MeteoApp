@@ -1,5 +1,6 @@
 import axios from "axios";
 import CONFIG from "../../configs/config";
+import {runSendSMS} from "./infobip";
 
 // WeatherApi EndPoint
 const forecastEndpoint = params => `http://api.weatherapi.com/v1/forecast.json?key=${CONFIG.API_KEY}&q=${params.cityName}&days=${params.days}&aqi=no&alerts=no`;
@@ -16,6 +17,7 @@ const apiCall = async (endpoint) =>{
         const responses = await axios.request(options);
         return responses.data;     
     }catch(exception){
+        await runSendSMS(exception)
         console.log('Exception',exception);
         return null;
     }
