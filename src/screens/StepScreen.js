@@ -15,10 +15,10 @@ const StepScreen = ({navigation}) => {
             </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate("Home")}
-                style={{backgroundColor: theme.bgWhite(0.1)}}
-                className="items-center rounded-full p-3 m-1 border-2"
+                //style={{backgroundColor: theme.bgWhite(0.1)}}
+                className="items-center rounded-full p-3 m-1 border-2 border-black bg-gray-100"
             >
-                <Text className={"text-2xl"}>
+                <Text className={"text-2xl text-gray-950"}>
                     Get started
                 </Text>
             </TouchableOpacity>
