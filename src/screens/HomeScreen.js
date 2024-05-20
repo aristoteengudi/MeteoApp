@@ -50,7 +50,7 @@ export default function HomeScreen(){
     return (
         <View className="flex-1 relative">
             <StatusBar style="light"/>
-            <Image blurRadius={70} source={require('../../assets/images/bg.png')} className="absolute h-full w-full" />
+            <Image blurRadius={70} source={require('../../assets/images/bg_6.png')} className="absolute h-full w-full" />
             <SafeAreaView className="flex flex-1">
                 {/* Search Section*/}
                 <View style={{height: '7%'}} className="mt-10 mx-4 relative z-50">
@@ -62,14 +62,14 @@ export default function HomeScreen(){
                             onChangeText={handleSearch}
                             placeholder='Recherche Ville'
                             placeholderTextColor={'lightgray'}
-                            className="pl-6 h-10 pb-1 flex-1 text-base text-white"
+                            className="pl-6 h-10 pb-1 flex-1 text-base text-whiter"
                             />
                         ):null
                     }
                         
                         <TouchableOpacity 
                         onPress={()=>toggleSearch(!showSearch)} 
-                        style={{backgroundColor: theme.bgWhite(0.1)}} 
+                        style={{backgroundColor: theme.bgWhite(0.1)}}
                         className="rounded-full p-3 m-1"
                         >
                         <MagnifyingGlassIcon size={"25"} color={"white"}/>
