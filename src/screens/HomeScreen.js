@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import { View, Text, SafeAreaView, TextInput, ScrollView} from "react-native";
+import { View, Text, SafeAreaView, TextInput, ScrollView, StyleSheet} from "react-native";
 import { Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { TouchableOpacity } from "react-native";
@@ -50,7 +50,7 @@ export default function HomeScreen(){
     return (
         <View className="flex-1 relative">
             <StatusBar style="light"/>
-            <Image blurRadius={70} source={require('../../assets/images/bg_6.png')} className="absolute h-full w-full" />
+            <Image blurRadius={1} source={require('../../assets/images/bg_6.png')} className="absolute h-full w-full" />
             <SafeAreaView className="flex flex-1">
                 {/* Search Section*/}
                 <View style={{height: '7%'}} className="mt-10 mx-4 relative z-50">
@@ -62,7 +62,7 @@ export default function HomeScreen(){
                             onChangeText={handleSearch}
                             placeholder='Recherche Ville'
                             placeholderTextColor={'lightgray'}
-                            className="pl-6 h-10 pb-1 flex-1 text-base text-whiter"
+                            className="pl-6 h-10 pb-1 flex-1 text-base text-white"
                             />
                         ):null
                     }
@@ -99,7 +99,7 @@ export default function HomeScreen(){
                 </View>
                 {/* forecast section*/}
                 <View className="mx-4 flex justify-around flex-1 mb-5">
-                    <ScrollView 
+                    <ScrollView
                         contentContainerStyle={{paddingVertical: 50}}
                         showsVerticalScrollIndicator={false}>
                     <Text className="text-white text-center text-2xl font-bold">
@@ -112,11 +112,11 @@ export default function HomeScreen(){
                     <View className="flex-row justify-center">
                         <Image
                           source={{ uri: "https:"+current?.condition.icon}}
-                          className="w-52 h-52"/>
+                          className="w-32 h-32"/>
                     </View>
                     {/* degre celcius */}
                     <View className="space-y-2">
-                        <Text className="text-center font-bold text-white text-6xl ml-5">
+                        <Text className="text-center font-bold text-white text-5xl ml-5">
                             {current?.temp_c} {current?.temp_c? "°":""}
                         </Text>
                         <Text className="text-center text-white text-xl ml-5 tracking-widest">
@@ -184,3 +184,10 @@ export default function HomeScreen(){
         </View>
     )
 }
+
+
+const style = StyleSheet.create({
+    weaTherImage: {
+        width: 20,
+    }
+})
